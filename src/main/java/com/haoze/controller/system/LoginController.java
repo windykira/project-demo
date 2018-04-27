@@ -87,6 +87,6 @@ public class LoginController extends BaseController {
         }*/
         model.addAttribute("picUrl","/img/photo_s.jpg");
         model.addAttribute("username", "admin");
-        return "index_v1";
+        return "index_v2";
     }
 }
