@@ -2,11 +2,12 @@ package com.haoze.controller.system;
 
 import com.haoze.common.annotation.Note;
 import com.haoze.common.controller.BaseController;
-import com.haoze.common.entity.Tree;
+import com.haoze.common.model.Tree;
 import com.haoze.model.system.MenuEntity;
 import com.haoze.service.system.MenuService;
-import com.haoze.utils.AjaxResult;
-import com.haoze.utils.MD5Utils;
+import com.haoze.common.model.AjaxResult;
+import com.haoze.utils.MD5Util;
+import com.haoze.utils.ShiroUtil;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.UsernamePasswordToken;
@@ -22,17 +23,14 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by haoz-dev4 on 2018/4/27.
+ * 用户登陆相关控制器信息。
+ * @author maxl 2018-04-27。
  */
 @Controller
 public class LoginController extends BaseController {
 
     @Autowired
     MenuService menuService;
-    /*@GetMapping({ "/", "" })
-    String welcome(Model model) {
-        return "redirect:/blog";
-    }*/
 
     @GetMapping({ "/", "" })
     String welcome(Model model) {
@@ -50,16 +48,15 @@ public class LoginController extends BaseController {
     @ResponseBody
     AjaxResult userLogin(String username, String password) {
 
-        /*password = MD5Utils.encrypt(username, password);
+        password = MD5Util.encrypt(username, password);
         UsernamePasswordToken token = new UsernamePasswordToken(username, password);
         Subject subject = SecurityUtils.getSubject();
         try {
             subject.login(token);
-            return AjaxResult.ok();
+            return AjaxResult.success();
         } catch (AuthenticationException e) {
-            return AjaxResult.error("用户或密码错误");
-        }*/
-        return AjaxResult.ok();
+            return AjaxResult.failure("用户或密码错误");
+        }
     }
 
     @Note("请求访问主页")
@@ -87,6 +84,12 @@ public class LoginController extends BaseController {
         }*/
         model.addAttribute("picUrl","/img/photo_s.jpg");
         model.addAttribute("username", "admin");
-        return "index_v2";
+        return "index_v1";
+    }
+
+    @GetMapping("/logout")
+    String logout() {
+        ShiroUtil.logout();
+        return "redirect:/login";
     }
 }

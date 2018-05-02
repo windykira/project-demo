@@ -11,7 +11,11 @@ import java.security.Principal;
 import java.util.Collection;
 import java.util.List;
 
-public class ShiroUtils {
+/**
+ * shiro操作工具。
+ * @author maxl 2018-04-27。
+ */
+public class ShiroUtil {
 
     @Autowired
     private static SessionDAO sessionDAO;

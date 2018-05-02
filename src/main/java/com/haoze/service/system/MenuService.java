@@ -1,6 +1,6 @@
 package com.haoze.service.system;
 
-import com.haoze.common.entity.Tree;
+import com.haoze.common.model.Tree;
 import com.haoze.model.system.MenuEntity;
 import org.springframework.stereotype.Service;
 
@@ -9,7 +9,8 @@ import java.util.Map;
 import java.util.Set;
 
 /**
- * Created by haoz-dev4 on 2018/4/27.
+ * 菜单数据服务接口。
+ * @author maxl 2018-04-27。
  */
 @Service
 public interface MenuService {

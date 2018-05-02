@@ -1,8 +1,7 @@
 package com.haoze.config;
 
-import com.haoze.common.config.ApplicationContextRegister;
 import com.haoze.model.system.UserEntity;
-import com.haoze.utils.ShiroUtils;
+import com.haoze.utils.ShiroUtil;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
@@ -14,15 +13,20 @@ import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
+/**
+ * 用户授权认证信息。
+ * @author maxl 2018-04-27。
+ */
 public class UserRealm extends AuthorizingRealm {
-/*	@Autowired
+
+	/*@Autowired
 	UserDao userMapper;
 	@Autowired
 	MenuService menuService;*/
 
 	@Override
 	protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection arg0) {
-		Long userId = ShiroUtils.getUserId();
+		Long userId = ShiroUtil.getUserId();
 		//MenuService menuService = ApplicationContextRegister.getBean(MenuService.class);
 		//Set<String> perms = menuService.listPerms(userId);
 		Set<String> perms = new HashSet();
@@ -34,7 +38,7 @@ public class UserRealm extends AuthorizingRealm {
 	@Override
 	protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
 		String username = (String) token.getPrincipal();
-		Map<String, Object> map = new HashMap<>(16);
+		Map<String, Object> map = new HashMap(16);
 		map.put("username", username);
 		String password = new String((char[]) token.getCredentials());
 

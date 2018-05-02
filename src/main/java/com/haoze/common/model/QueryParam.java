@@ -1,17 +1,16 @@
-package com.haoze.utils;
+package com.haoze.common.model;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Created by haoz-dev4 on 2018/4/27.
+ * 查询参数。
+ * @author maxl 2018-04-27。
  */
 public class QueryParam extends LinkedHashMap<String, Object> {
 
     private static final long serialVersionUID = 1L;
-    //
     private int offset;
-    // 每页条数
     private int limit;
 
     public QueryParam(Map<String, Object> params) {

@@ -3,7 +3,11 @@ package com.haoze.utils;
 import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.util.ByteSource;
 
-public class MD5Utils {
+/**
+ * MD5加密工具。
+ * @author maxl 2018-04-27。
+ */
+public class MD5Util {
 
 	private static final String SALT = "1qazxsw2";
 	private static final String ALGORITH_NAME = "md5";
@@ -21,7 +25,7 @@ public class MD5Utils {
 	}
 
 	public static void main(String[] args) {
-		//System.out.println(MD5Utils.encrypt("admin", "1"));
+		//System.out.println(MD5Util.encrypt("admin", "1"));
 	}
 
 }

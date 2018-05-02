@@ -1,14 +1,18 @@
 package com.haoze.utils;
 
 
-import com.haoze.common.entity.Tree;
+import com.haoze.common.model.Tree;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class BuildTree {
+/**
+ * 树形数据构建工具。
+ * @author maxl 2018-04-27。
+ */
+public class TreeBuildUtil {
 
 	public static <T> Tree<T> build(List<Tree<T>> nodes) {
 
@@ -64,14 +68,11 @@ public class BuildTree {
 		List<Tree<T>> topNodes = new ArrayList<Tree<T>>();
 
 		for (Tree<T> children : nodes) {
-
 			String pid = children.getParentId();
 			if (pid == null || idParam.equals(pid)) {
 				topNodes.add(children);
-
 				continue;
 			}
-
 			for (Tree<T> parent : nodes) {
 				String id = parent.getId();
 				if (id != null && id.equals(pid)) {

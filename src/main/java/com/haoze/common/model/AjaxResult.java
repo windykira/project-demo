@@ -1,25 +1,26 @@
-package com.haoze.utils;
+package com.haoze.common.model;
 
 import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by haoz-dev4 on 2018/4/27.
+ * 返回数据基本信息。
+ * @author maxl 2018-04-27。
  */
 public class AjaxResult extends HashMap<String, Object> {
 
     private static final long serialVersionUID = 1L;
 
     public AjaxResult() {
-        put("code", 0);
+        put("code", 1);
         put("msg", "操作成功");
     }
 
-    public static AjaxResult error() {
-        return error(1, "操作失败");
+    public static AjaxResult failure() {
+        return error(0, "操作失败");
     }
 
-    public static AjaxResult error(String msg) {
+    public static AjaxResult failure(String msg) {
         return error(500, msg);
     }
 
@@ -30,19 +31,19 @@ public class AjaxResult extends HashMap<String, Object> {
         return result;
     }
 
-    public static AjaxResult ok(String msg) {
+    public static AjaxResult success(String msg) {
         AjaxResult result = new AjaxResult();
         result.put("msg", msg);
         return result;
     }
 
-    public static AjaxResult ok(Map<String, Object> map) {
+    public static AjaxResult success(Map<String, Object> map) {
         AjaxResult result = new AjaxResult();
         result.putAll(map);
         return result;
     }
 
-    public static AjaxResult ok() {
+    public static AjaxResult success() {
         return new AjaxResult();
     }
 

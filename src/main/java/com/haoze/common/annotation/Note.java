@@ -6,7 +6,8 @@ import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
 
 /**
- * Created by haoz-dev4 on 2018/4/27.
+ * 备注信息。
+ * @author maxl 2018-04-27。
  */
 @Target(ElementType.METHOD)
 @Retention(RetentionPolicy.RUNTIME)

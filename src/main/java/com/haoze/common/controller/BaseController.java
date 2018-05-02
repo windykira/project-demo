@@ -1,14 +1,18 @@
 package com.haoze.common.controller;
 
 import com.haoze.model.system.UserEntity;
-import com.haoze.utils.ShiroUtils;
+import com.haoze.utils.ShiroUtil;
 import org.springframework.stereotype.Controller;
 
+/**
+ * 基础Controller。
+ * @author maxl 2018-04-27。
+ */
 @Controller
 public class BaseController {
 
 	public UserEntity getUser() {
-		return ShiroUtils.getUser();
+		return ShiroUtil.getUser();
 	}
 
 	public Long getUserId() {

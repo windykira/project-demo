@@ -7,10 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 菜单管理
- * @author chglee
- * @email 1992lcg@163.com
- * @date 2017-10-03 09:45:09
+ * 菜单数据操作类。
+ * @author maxl 2018-04-27。
  */
 @Mapper
 public interface MenuDao {

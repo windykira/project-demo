@@ -1,7 +1,6 @@
 package com.haoze.config;
 
-import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
-//import com.haoze.common.listener.BDSessionListener;
+import com.haoze.common.listener.EmrSessionListener;
 import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.session.SessionListener;
@@ -21,161 +20,99 @@ import java.util.Collection;
 import java.util.LinkedHashMap;
 
 /**
- * Created by haoz-dev4 on 2018/4/27.
+ * Shiro注册信息。
+ *
+ * @author maxl 2018-04-27。
  */
-//@Configuration
+@Configuration
 public class ShiroConfig {
-    /*@Value("${spring.redis.host}")
-    private String host;
-    @Value("${spring.redis.password}")
-    private String password;
-    @Value("${spring.redis.port}")
-    private int port;
-    @Value("${spring.redis.timeout}")
-    private int timeout;*/
 
     @Value("${cacheType}")
     private String cacheType;
-
-    /*@Value("${server.session-timeout}")
-    private int tomcatTimeout;*/
+    @Value("${server.session-timeout}")
+    private int sessionTimeout;
 
     @Bean
     public static LifecycleBeanPostProcessor getLifecycleBeanPostProcessor() {
         return new LifecycleBeanPostProcessor();
     }
 
-    /**
-     * ShiroDialect，为了在thymeleaf里使用shiro的标签的bean
-     * @return
-     */
     @Bean
-    public ShiroDialect shiroDialect() {
-        return new ShiroDialect();
+    ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager) {
+
+        ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
+        shiroFilterFactoryBean.setSecurityManager(securityManager);
+        shiroFilterFactoryBean.setLoginUrl("/login");
+        shiroFilterFactoryBean.setSuccessUrl("/index");
+        shiroFilterFactoryBean.setUnauthorizedUrl("/403");
+        LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap();
+        filterChainDefinitionMap.put("/css/**", "anon");
+        filterChainDefinitionMap.put("/js/**", "anon");
+        filterChainDefinitionMap.put("/fonts/**", "anon");
+        filterChainDefinitionMap.put("/img/**", "anon");
+        filterChainDefinitionMap.put("/docs/**", "anon");
+        filterChainDefinitionMap.put("/druid/**", "anon");
+        filterChainDefinitionMap.put("/upload/**", "anon");
+        filterChainDefinitionMap.put("/files/**", "anon");
+        filterChainDefinitionMap.put("/logout", "logout");
+        filterChainDefinitionMap.put("/", "anon");
+        filterChainDefinitionMap.put("/system/index/main", "anon");
+        shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
+        return shiroFilterFactoryBean;
     }
 
-	@Bean
-    ShiroFilterFactoryBean shiroFilterFactoryBean(SecurityManager securityManager) {
-		ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
-		shiroFilterFactoryBean.setSecurityManager(securityManager);
-		shiroFilterFactoryBean.setLoginUrl("/login");
-		shiroFilterFactoryBean.setSuccessUrl("/index");
-		shiroFilterFactoryBean.setUnauthorizedUrl("/403");
-		LinkedHashMap<String, String> filterChainDefinitionMap = new LinkedHashMap<>();
-		filterChainDefinitionMap.put("/css/**", "anon");
-		filterChainDefinitionMap.put("/js/**", "anon");
-		filterChainDefinitionMap.put("/fonts/**", "anon");
-		filterChainDefinitionMap.put("/img/**", "anon");
-		filterChainDefinitionMap.put("/docs/**", "anon");
-		filterChainDefinitionMap.put("/druid/**", "anon");
-		filterChainDefinitionMap.put("/upload/**", "anon");
-		filterChainDefinitionMap.put("/files/**", "anon");
-		filterChainDefinitionMap.put("/logout", "logout");
-		filterChainDefinitionMap.put("/", "anon");
-		filterChainDefinitionMap.put("/blog", "anon");
-		filterChainDefinitionMap.put("/blog/open/**", "anon");
-		filterChainDefinitionMap.put("/**", "authc");
-		shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
-		return shiroFilterFactoryBean;
-	}
-
 
     @Bean
-    public SecurityManager securityManager(){
-        DefaultWebSecurityManager securityManager =  new DefaultWebSecurityManager();
+    public SecurityManager securityManager() {
+        DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
         //设置realm.
         securityManager.setRealm(userRealm());
-        // 自定义缓存实现 使用redis
-        /*if(Constant.CACHE_TYPE_REDIS.equals(cacheType)){
-            securityManager.setCacheManager(cacheManager());
-        }else {
-            securityManager.setCacheManager(ehCacheManager());
-        }*/
         securityManager.setCacheManager(ehCacheManager());
         securityManager.setSessionManager(sessionManager());
         return securityManager;
     }
 
-	@Bean
+    @Bean
     UserRealm userRealm() {
-		UserRealm userRealm = new UserRealm();
-		return userRealm;
-	}
+        UserRealm userRealm = new UserRealm();
+        return userRealm;
+    }
 
     /**
-     *  开启shiro aop注解支持.
-     *  使用代理方式;所以需要开启代码支持;
+     * 开启shiro aop注解支持.
+     * 使用代理方式;所以需要开启代码支持;
+     *
      * @param securityManager
      * @return
      */
     @Bean
-    public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(SecurityManager securityManager){
+    public AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor(SecurityManager securityManager) {
+
         AuthorizationAttributeSourceAdvisor authorizationAttributeSourceAdvisor = new AuthorizationAttributeSourceAdvisor();
         authorizationAttributeSourceAdvisor.setSecurityManager(securityManager);
         return authorizationAttributeSourceAdvisor;
     }
 
-    /**
-     * 配置shiro redisManager
-     * @return
-     */
-    /*@Bean
-    public RedisManager redisManager() {
-        RedisManager redisManager = new RedisManager();
-        redisManager.setHost(host);
-        redisManager.setPort(port);
-        redisManager.setExpire(1800);// 配置缓存过期时间
-        //redisManager.setTimeout(1800);
-        redisManager.setPassword(password);
-        return redisManager;
-    }*/
-
-    /**
-     * cacheManager 缓存 redis实现
-     * 使用的是shiro-redis开源插件
-     * @return
-     */
-    /*public RedisCacheManager cacheManager() {
-        RedisCacheManager redisCacheManager = new RedisCacheManager();
-        redisCacheManager.setRedisManager(redisManager());
-        return redisCacheManager;
-    }*/
-
-
-    /**
-     * RedisSessionDAO shiro sessionDao层的实现 通过redis
-     * 使用的是shiro-redis开源插件
-     */
-    /*@Bean
-    public RedisSessionDAO redisSessionDAO() {
-        RedisSessionDAO redisSessionDAO = new RedisSessionDAO();
-        redisSessionDAO.setRedisManager(redisManager());
-        return redisSessionDAO;
-    }*/
-
     @Bean
-    public SessionDAO sessionDAO(){
-        /*if(Constant.CACHE_TYPE_REDIS.equals(cacheType)){
-            return redisSessionDAO();
-        }else {
-            return new MemorySessionDAO();
-        }*/
+    public SessionDAO sessionDAO() {
         return new MemorySessionDAO();
     }
 
     /**
-     * shiro session的管理
+     * shiro session
      */
     @Bean
     public DefaultWebSessionManager sessionManager() {
+
         DefaultWebSessionManager sessionManager = new DefaultWebSessionManager();
-        sessionManager.setGlobalSessionTimeout(300*1000);
+        sessionManager.setGlobalSessionTimeout(sessionTimeout * 1000);
         sessionManager.setSessionDAO(sessionDAO());
-        Collection<SessionListener> listeners = new ArrayList<SessionListener>();
-        //listeners.add(new BDSessionListener());
+        Collection<SessionListener> listeners = new ArrayList();
+        listeners.add(new EmrSessionListener());
         sessionManager.setSessionListeners(listeners);
         return sessionManager;
     }
+
     @Bean
     public EhCacheManager ehCacheManager() {
         EhCacheManager em = new EhCacheManager();

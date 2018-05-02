@@ -4,14 +4,16 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by haoz-dev4 on 2018/4/27.
+ * 分页工具。
+ * @author maxl 2018-04-27。
  */
-public class PageUtils implements Serializable {
+public class PageUtil implements Serializable {
+
 	private static final long serialVersionUID = 1L;
 	private int total;
 	private List<?> rows;
 
-	public PageUtils(List<?> list, int total) {
+	public PageUtil(List<?> list, int total) {
 		this.rows = list;
 		this.total = total;
 	}

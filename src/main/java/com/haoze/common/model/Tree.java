@@ -1,4 +1,4 @@
-package com.haoze.common.entity;
+package com.haoze.common.model;
 
 import com.alibaba.fastjson.JSON;
 
@@ -7,7 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * Created by haoz-dev4 on 2018/4/27.
+ * 树形数据信息。
+ * @author maxl 2018-04-27。
  */
 public class Tree<T> {
 	/**
@@ -32,9 +33,9 @@ public class Tree<T> {
 	private Map<String, Object> attributes;
 
 	/**
-	 * 节点的子节点
+	 * 子节点
 	 */
-	private List<Tree<T>> children = new ArrayList<Tree<T>>();
+	private List<Tree<T>> children = new ArrayList();
 
 	/**
 	 * 父ID

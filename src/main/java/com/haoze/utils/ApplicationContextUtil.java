@@ -1,4 +1,4 @@
-package com.haoze.common.config;
+package com.haoze.utils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,18 +8,15 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 /**
- *
- * @author chen
- * @date 2017/9/4
- * <p>
- * Email 122741482@qq.com
- * <p>
- * Describe:
+ * IOC容器工具。
+ * @author maxl 2018-04-27。
  */
 @Component
-public class ApplicationContextRegister implements ApplicationContextAware {
-    private static Logger logger = LoggerFactory.getLogger(ApplicationContextRegister.class);
+public class ApplicationContextUtil implements ApplicationContextAware {
+
+    private static Logger logger = LoggerFactory.getLogger(ApplicationContextUtil.class);
     private static ApplicationContext APPLICATION_CONTEXT;
+
     /**
      * 设置spring上下文
      * @param applicationContext spring上下文

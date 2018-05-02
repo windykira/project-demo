@@ -1,10 +1,10 @@
 package com.haoze.service.impl.system;
 
-import com.haoze.common.entity.Tree;
+import com.haoze.common.model.Tree;
 import com.haoze.dao.system.MenuDao;
 import com.haoze.model.system.MenuEntity;
 import com.haoze.service.system.MenuService;
-import com.haoze.utils.BuildTree;
+import com.haoze.utils.TreeBuildUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
@@ -13,10 +13,14 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
-@SuppressWarnings("AlibabaRemoveCommentedCode")
+/**
+ * 菜单数据服务类。
+ * @author maxl 2018-04-27。
+ */
 @Service
 @Transactional(readOnly = true,rollbackFor = Exception.class)
 public class MenuServiceImpl implements MenuService {
+
 	@Autowired
 	MenuDao menuMapper;
 	/**
@@ -40,7 +44,7 @@ public class MenuServiceImpl implements MenuService {
 			trees.add(tree);
 		}
 		// 默认顶级菜单为０，根据数据库实际情况调整
-		Tree<MenuEntity> t = BuildTree.build(trees);
+		Tree<MenuEntity> t = TreeBuildUtil.build(trees);
 		return t;
 	}
 
@@ -88,7 +92,7 @@ public class MenuServiceImpl implements MenuService {
 			trees.add(tree);
 		}
 		// 默认顶级菜单为０，根据数据库实际情况调整
-		Tree<MenuEntity> t = BuildTree.build(trees);
+		Tree<MenuEntity> t = TreeBuildUtil.build(trees);
 		return t;
 	}
 
@@ -122,7 +126,7 @@ public class MenuServiceImpl implements MenuService {
 			trees.add(tree);
 		}
 		// 默认顶级菜单为０，根据数据库实际情况调整
-		Tree<MenuEntity> t = BuildTree.build(trees);
+		Tree<MenuEntity> t = TreeBuildUtil.build(trees);
 		return t;
 	}
 
@@ -155,7 +159,7 @@ public class MenuServiceImpl implements MenuService {
 			trees.add(tree);
 		}
 		// 默认顶级菜单为０，根据数据库实际情况调整
-		List<Tree<MenuEntity>> list = BuildTree.buildList(trees, "0");
+		List<Tree<MenuEntity>> list = TreeBuildUtil.buildList(trees, "0");
 		return list;
 	}
 
