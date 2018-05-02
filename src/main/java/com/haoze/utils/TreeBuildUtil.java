@@ -65,7 +65,7 @@ public class TreeBuildUtil {
 		if (nodes == null) {
 			return null;
 		}
-		List<Tree<T>> topNodes = new ArrayList<Tree<T>>();
+		List<Tree<T>> topNodes = new ArrayList();
 
 		for (Tree<T> children : nodes) {
 			String pid = children.getParentId();
