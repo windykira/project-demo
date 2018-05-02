@@ -1,7 +1,10 @@
 package com.haoze.controller.system;
 
+import com.haoze.common.annotation.Note;
 import com.haoze.common.model.QueryParam;
+import com.haoze.model.system.RoleEntity;
 import com.haoze.model.system.UserEntity;
+import com.haoze.service.system.RoleService;
 import com.haoze.service.system.UserService;
 import com.haoze.utils.PageUtil;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -26,6 +29,8 @@ public class UserController {
 
     @Autowired
     UserService userService;
+    @Autowired
+    RoleService roleService;
 
     private String prefix="system/user";
 
@@ -44,5 +49,14 @@ public class UserController {
         int total = userService.count(queryParam);
         PageUtil pageUtil = new PageUtil(sysUserList, total);
         return pageUtil;
+    }
+
+    @RequiresPermissions("sys:user:add")
+    @Note("添加用户")
+    @GetMapping("/add")
+    String add(Model model) {
+        List<RoleEntity> roles = roleService.list();
+        model.addAttribute("roles", roles);
+        return prefix + "/add";
     }
 }
