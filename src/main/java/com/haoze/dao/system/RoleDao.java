@@ -12,5 +12,8 @@ import java.util.Map;
 @Mapper
 public interface RoleDao {
 
+    RoleEntity get(Long roleId);
     List<RoleEntity> list(Map<String,Object> map);
+    int save(RoleEntity role);
+
 }

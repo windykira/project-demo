@@ -11,5 +11,8 @@ import java.util.List;
 @Service
 public interface RoleService {
 
+    RoleEntity get(Long id);
     List<RoleEntity> list();
+
+    int save(RoleEntity role);
 }

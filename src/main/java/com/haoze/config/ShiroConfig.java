@@ -1,5 +1,6 @@
 package com.haoze.config;
 
+import at.pollux.thymeleaf.shiro.dialect.ShiroDialect;
 import com.haoze.common.listener.EmrSessionListener;
 import org.apache.shiro.cache.ehcache.EhCacheManager;
 import org.apache.shiro.mgt.SecurityManager;
@@ -57,6 +58,12 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/logout", "logout");
         filterChainDefinitionMap.put("/", "anon");
         filterChainDefinitionMap.put("/system/index/main", "anon");
+        filterChainDefinitionMap.put("/main/open/**", "anon");
+
+        filterChainDefinitionMap.put("/index", "authc");
+        filterChainDefinitionMap.put("/user/**", "authc");
+        filterChainDefinitionMap.put("/sysDept/**", "authc");
+        filterChainDefinitionMap.put("/role/**", "authc");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
     }
@@ -120,4 +127,8 @@ public class ShiroConfig {
         return em;
     }
 
+    /*@Bean(name = "shiroDialect")
+    public ShiroDialect shiroDialect(){
+        return new ShiroDialect();
+    }*/
 }

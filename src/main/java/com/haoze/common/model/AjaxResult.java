@@ -17,14 +17,14 @@ public class AjaxResult extends HashMap<String, Object> {
     }
 
     public static AjaxResult failure() {
-        return error(0, "操作失败");
+        return failure(0, "操作失败");
     }
 
     public static AjaxResult failure(String msg) {
-        return error(500, msg);
+        return failure(500, msg);
     }
 
-    public static AjaxResult error(int code, String msg) {
+    public static AjaxResult failure(int code, String msg) {
         AjaxResult result = new AjaxResult();
         result.put("code", code);
         result.put("msg", msg);
