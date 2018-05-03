@@ -15,4 +15,6 @@ public interface RoleMenuDao {
     int removeByRoleId(Long roleId);
 
     int batchSave(List<RoleMenuEntity> list);
+
+    List<Long> listMenuIdByRoleId(Long roleId);
 }

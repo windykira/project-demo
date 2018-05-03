@@ -2,6 +2,7 @@ package com.haoze.service.impl.system;
 
 import com.haoze.common.model.Tree;
 import com.haoze.dao.system.MenuDao;
+import com.haoze.dao.system.RoleMenuDao;
 import com.haoze.model.system.MenuEntity;
 import com.haoze.service.system.MenuService;
 import com.haoze.utils.TreeBuildUtil;
@@ -23,6 +24,9 @@ public class MenuServiceImpl implements MenuService {
 
 	@Autowired
 	MenuDao menuMapper;
+	@Autowired
+	RoleMenuDao roleMenuMapper;
+
 	/**
 	 * @param
 	 * @return 树形菜单
@@ -82,10 +86,11 @@ public class MenuServiceImpl implements MenuService {
 
 	@Override
 	public Tree<MenuEntity> getTree() {
-		List<Tree<MenuEntity>> trees = new ArrayList<Tree<MenuEntity>>();
-		List<MenuEntity> MenuEntitys = menuMapper.list(new HashMap<>(16));
+
+		List<Tree<MenuEntity>> trees = new ArrayList();
+		List<MenuEntity> MenuEntitys = menuMapper.list(new HashMap());
 		for (MenuEntity sysMenuEntity : MenuEntitys) {
-			Tree<MenuEntity> tree = new Tree<MenuEntity>();
+			Tree<MenuEntity> tree = new Tree();
 			tree.setId(sysMenuEntity.getMenuId().toString());
 			tree.setParentId(sysMenuEntity.getParentId().toString());
 			tree.setText(sysMenuEntity.getName());
@@ -100,18 +105,17 @@ public class MenuServiceImpl implements MenuService {
 	public Tree<MenuEntity> getTree(Long id) {
 		// 根据roleId查询权限
 		List<MenuEntity> menus = menuMapper.list(new HashMap<String, Object>(16));
-		//List<Long> menuIds = roleMenuMapper.listMenuIdByRoleId(id);
-		List<Long> menuIds = null;
+		List<Long> menuIds = roleMenuMapper.listMenuIdByRoleId(id);
 		List<Long> temp = menuIds;
 		for (MenuEntity menu : menus) {
 			if (temp.contains(menu.getParentId())) {
 				menuIds.remove(menu.getParentId());
 			}
 		}
-		List<Tree<MenuEntity>> trees = new ArrayList<Tree<MenuEntity>>();
+		List<Tree<MenuEntity>> trees = new ArrayList();
 		List<MenuEntity> MenuEntitys = menuMapper.list(new HashMap<String, Object>(16));
 		for (MenuEntity sysMenuEntity : MenuEntitys) {
-			Tree<MenuEntity> tree = new Tree<MenuEntity>();
+			Tree<MenuEntity> tree = new Tree();
 			tree.setId(sysMenuEntity.getMenuId().toString());
 			tree.setParentId(sysMenuEntity.getParentId().toString());
 			tree.setText(sysMenuEntity.getName());

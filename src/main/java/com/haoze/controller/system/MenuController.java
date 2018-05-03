@@ -4,6 +4,7 @@ import com.haoze.common.annotation.Note;
 import com.haoze.common.controller.BaseController;
 import com.haoze.common.model.AjaxResult;
 import com.haoze.common.model.Constant;
+import com.haoze.common.model.Tree;
 import com.haoze.model.system.MenuEntity;
 import com.haoze.service.system.MenuService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -114,5 +115,20 @@ public class MenuController extends BaseController{
         } else {
             return AjaxResult.failure(1, "删除失败");
         }
+    }
+
+    @GetMapping("/tree/{roleId}")
+    @ResponseBody
+    Tree<MenuEntity> tree(@PathVariable("roleId") Long roleId) {
+        Tree<MenuEntity> tree = menuService.getTree(roleId);
+        return tree;
+    }
+
+    @GetMapping("/tree")
+    @ResponseBody
+    Tree<MenuEntity> tree() {
+
+        Tree<MenuEntity> tree = menuService.getTree();
+        return tree;
     }
 }

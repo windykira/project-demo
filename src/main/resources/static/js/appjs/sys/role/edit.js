@@ -22,7 +22,7 @@ function loadMenuTree(menuTree) {
 			//"cascade" : ' up'
 		}
 	});
-	$('#menuTree').jstree('open_all');
+	//$('#menuTree').jstree('open_all');
 }
 function getAllSelectNodes() {
 	var ref = $('#menuTree').jstree(true); // 获得整个树
