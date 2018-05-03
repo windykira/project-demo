@@ -1,5 +1,6 @@
 package com.haoze.service.system;
 
+import com.github.pagehelper.Page;
 import com.haoze.model.system.UserEntity;
 import org.springframework.stereotype.Service;
 
@@ -26,4 +27,6 @@ public interface UserService {
      * @return
      */
     int count(Map<String, Object> map);
+
+    Page<UserEntity> listByPage(int pageNo,int pageSize);
 }

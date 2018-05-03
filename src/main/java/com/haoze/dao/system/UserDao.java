@@ -1,5 +1,6 @@
 package com.haoze.dao.system;
 
+import com.github.pagehelper.Page;
 import com.haoze.model.system.UserEntity;
 import org.apache.ibatis.annotations.Mapper;
 
@@ -15,4 +16,5 @@ public interface UserDao {
 
     List<UserEntity> list(Map<String,Object> map);
     int count(Map<String,Object> map);
+    Page<UserEntity> listByPage();
 }

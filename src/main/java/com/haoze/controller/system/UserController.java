@@ -1,6 +1,8 @@
 package com.haoze.controller.system;
 
+import com.github.pagehelper.Page;
 import com.haoze.common.annotation.Note;
+import com.haoze.common.model.PaginationResult;
 import com.haoze.common.model.QueryParam;
 import com.haoze.model.system.RoleEntity;
 import com.haoze.model.system.UserEntity;
@@ -48,6 +50,18 @@ public class UserController {
         List<UserEntity> sysUserList = userService.list(queryParam);
         int total = userService.count(queryParam);
         PageUtil pageUtil = new PageUtil(sysUserList, total);
+        return pageUtil;
+    }
+
+    @GetMapping("/listForPage")
+    @ResponseBody
+    PageUtil listForPage(@RequestParam Map<String, Object> params) {
+        // 查询列表数据
+        QueryParam queryParam = new QueryParam(params);
+        Page<UserEntity> sysUserList = userService.listByPage(queryParam.getPage(),queryParam.getLimit());
+        int total = userService.count(queryParam);
+        PageUtil pageUtil = new PageUtil(sysUserList, total);
+        new PaginationResult(sysUserList);
         return pageUtil;
     }
 

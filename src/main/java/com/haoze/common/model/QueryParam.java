@@ -12,15 +12,21 @@ public class QueryParam extends LinkedHashMap<String, Object> {
     private static final long serialVersionUID = 1L;
     private int offset;
     private int limit;
+    private int page;
 
     public QueryParam(Map<String, Object> params) {
         this.putAll(params);
         // 分页参数
         this.offset = Integer.parseInt(params.get("offset").toString());
         this.limit = Integer.parseInt(params.get("limit").toString());
+        this.page = Integer.parseInt(params.get("pageSize").toString());
         this.put("offset", offset);
         this.put("page", offset / limit + 1);
         this.put("limit", limit);
+    }
+
+    public int getPage() {
+        return page;
     }
 
     public int getOffset() {
