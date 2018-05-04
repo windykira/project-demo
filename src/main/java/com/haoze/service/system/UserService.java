@@ -28,5 +28,5 @@ public interface UserService {
      */
     int count(Map<String, Object> map);
 
-    Page<UserEntity> listByPage(int pageNo,int pageSize);
+    Page<UserEntity> listByPage(int pageNo, int pageSize);
 }

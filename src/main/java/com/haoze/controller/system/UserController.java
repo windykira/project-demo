@@ -1,6 +1,5 @@
 package com.haoze.controller.system;
 
-import com.github.pagehelper.Page;
 import com.haoze.common.annotation.Note;
 import com.haoze.common.model.PaginationResult;
 import com.haoze.common.model.QueryParam;
@@ -53,16 +52,17 @@ public class UserController {
         return pageUtil;
     }
 
-    @GetMapping("/listForPage")
+    @GetMapping("/listByPage")
     @ResponseBody
     PageUtil listForPage(@RequestParam Map<String, Object> params) {
         // 查询列表数据
-        QueryParam queryParam = new QueryParam(params);
+        /*QueryParam queryParam = new QueryParam(params);
         Page<UserEntity> sysUserList = userService.listByPage(queryParam.getPage(),queryParam.getLimit());
         int total = userService.count(queryParam);
         PageUtil pageUtil = new PageUtil(sysUserList, total);
         new PaginationResult(sysUserList);
-        return pageUtil;
+        return pageUtil;*/
+        return null;
     }
 
     @RequiresPermissions("sys:user:add")

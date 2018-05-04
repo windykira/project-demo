@@ -49,6 +49,13 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>runtime</scope>
 		</dependency>
+
+		<!--pagehelper -->
+		<dependency>
+			<groupId>com.github.pagehelper</groupId>
+			<artifactId>pagehelper-spring-boot-starter</artifactId>
+			<version>1.2.3</version>
+		</dependency>
 		<!-- oracle -->
 		<dependency>
 			<groupId>com.oracle</groupId>
@@ -72,11 +79,11 @@
 		</dependency>
 
 		<!--mybatis -->
-		<dependency>
+		<!--<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
 			<version>3.4.4</version>
-		</dependency>
+		</dependency>-->
 
 		<!--druid -->
 		<dependency>
@@ -148,11 +155,10 @@
 			<artifactId>ehcache</artifactId>
 		</dependency>
 
-		<!-- xss过滤组件 -->
 		<dependency>
 			<groupId>org.jsoup</groupId>
 			<artifactId>jsoup</artifactId>
-			<version>1.9.2</version>
+			<version>1.11.2</version>
 		</dependency>
 
 		<dependency>
@@ -161,11 +167,11 @@
 			<version>2.2.1</version>
 		</dependency>
 
-		<dependency>
+		<!--<dependency>
 			<groupId>com.github.pagehelper</groupId>
 			<artifactId>pagehelper</artifactId>
 			<version>3.2.3</version>
-		</dependency>
+		</dependency>-->
 	</dependencies>
 
 	<build>

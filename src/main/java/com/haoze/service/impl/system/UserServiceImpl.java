@@ -4,6 +4,7 @@ import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.haoze.common.model.PaginationResult;
 import com.haoze.dao.system.UserDao;
+import com.haoze.dao.system.UserOracleDao;
 import com.haoze.model.system.UserEntity;
 import com.haoze.service.system.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,8 @@ public class UserServiceImpl implements UserService{
 
     @Autowired
     UserDao userMapper;
+    @Autowired
+    UserOracleDao userOracleMapper;
 
     @Override
     public List<UserEntity> list(Map<String, Object> map) {
@@ -30,13 +33,13 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public int count(Map<String, Object> map) {
-        return userMapper.count(map);
+        //return userMapper.count(map);
+        return userOracleMapper.countForOracle(map);
     }
 
     @Override
     public Page<UserEntity> listByPage(int pageNo, int pageSize) {
-
         PageHelper.startPage(pageNo, pageSize);
-        return userMapper.listByPage();
+        return userOracleMapper.listByPage();
     }
 }

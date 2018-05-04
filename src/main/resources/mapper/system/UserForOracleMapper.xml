@@ -1,14 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.haoze.dao.system.UserDao">
+<mapper namespace="com.haoze.dao.system.UserOracleDao">
 
-    <select id="getForOracle" resultType="com.haoze.model.system.UserEntity">
+    <resultMap id="BaseResultMap" type="com.haoze.model.system.EmrUserEntity" >
+        <result column="USERID" property="userID" jdbcType="VARCHAR" />
+        <result column="USERNAME" property="userName" jdbcType="VARCHAR" />
+        <result column="NAME" property="name" jdbcType="VARCHAR" />
+        <result column="PASSWORD" property="passWord" jdbcType="VARCHAR" />
+        <result column="DEPTID" property="deptID" jdbcType="VARCHAR" />
+        <result column="EMAIL" property="email" jdbcType="VARCHAR" />
+        <result column="MOBILE" property="mobile" jdbcType="VARCHAR" />
+        <result column="STATUS" property="status" jdbcType="VARCHAR" />
+        <result column="CREATEUSER" property="createUser" jdbcType="VARCHAR" />
+
+        <result column="CREATEDATE" property="createDate" jdbcType="DATE" />
+        <result column="MODIFYDATE" property="modifyDate" jdbcType="DATE" />
+        <result column="SEX" property="sex" jdbcType="VARCHAR" />
+        <result column="BIRTH" property="birth" jdbcType="VARCHAR" />
+        <result column="PICID" property="picID" jdbcType="VARCHAR" />
+        <result column="LIVEADDRESS" property="liveAddress" jdbcType="VARCHAR" />
+        <result column="HOBBY" property="hobby" jdbcType="VARCHAR" />
+        <result column="PROVINCE" property="province" jdbcType="VARCHAR" />
+        <result column="CITY" property="city" jdbcType="VARCHAR" />
+        <result column="DISTRICT" property="dsitrict" jdbcType="VARCHAR" />
+    </resultMap>
+
+    <sql id="Base_Column_List">
+          USERID,USERNAME,NAME,PASSWORD,DEPTID,EMAIL,MOBILE,STATUS,CREATEUSER,CREATEDATE,MODIFYDATE,SEX,BIRTH,PICID,LIVEADDRESS,HOBBY,PROVINCE,CITY,DISTRICT
+    </sql>
+
+    <select id="getForOracle" resultType="com.haoze.model.system.EmrUserEntity">
         select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user where user_id = #{value}
     </select>
 
-    <select id="listForOracle" resultType="com.haoze.model.system.UserEntity">
-        select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user
+    <select id="listByPage" resultType="com.haoze.model.system.EmrUserEntity">
+        select
+        <include refid="Base_Column_List" />
+        from SYS_USER
         <where>
             <if test="userId != null and userId != ''"> and user_id = #{userId} </if>
             <if test="username != null and username != ''"> and username = #{username} </if>
@@ -35,12 +64,9 @@
                 order by ${sort} ${order}
             </when>
             <otherwise>
-                order by user_id desc
+                order by USERID asc
             </otherwise>
         </choose>
-        <if test="page != null and limit != null">
-            
-        </if>
     </select>
 
     <select id="countForOracle" resultType="int">
@@ -68,7 +94,7 @@
         </where>
     </select>
 
-    <insert id="saveForOracle" parameterType="com.haoze.model.system.UserEntity" useGeneratedKeys="true" keyProperty="userId">
+    <insert id="saveForOracle" parameterType="com.haoze.model.system.EmrUserEntity" useGeneratedKeys="true" keyProperty="userId">
         insert into sys_user
         (
         `username`,
@@ -113,7 +139,7 @@
         )
     </insert>
 
-    <update id="updateForOracle" parameterType="com.haoze.model.system.UserEntity">
+    <update id="updateForOracle" parameterType="com.haoze.model.system.EmrUserEntity">
         update sys_user
         <set>
             <if test="username != null">`username` = #{username}, </if>

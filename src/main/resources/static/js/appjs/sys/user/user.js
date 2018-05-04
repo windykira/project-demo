@@ -203,6 +203,13 @@ function loadTree(tree) {
 	});
 	$('#jstree').jstree().open_all();
 }
+
+$("#searchTree").on("keyup",function(){
+
+	var value = $('#searchTree').val();
+	$('#jstree').jstree(true).search(value);
+});
+
 $('#jstree').on("changed.jstree", function(e, data) {
 	if (data.selected == -1) {
 		var opt = {
