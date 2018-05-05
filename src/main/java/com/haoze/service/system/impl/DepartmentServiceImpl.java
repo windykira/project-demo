@@ -1,4 +1,4 @@
-package com.haoze.service.impl.system;
+package com.haoze.service.system.impl;
 
 import com.haoze.common.model.Tree;
 import com.haoze.dao.system.DepartmentDao;

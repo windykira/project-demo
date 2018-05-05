@@ -29,10 +29,10 @@ public class WebLogAspect {
 
     @Before("logPointCut()")
     public void doBefore(JoinPoint joinPoint) throws Throwable {
+
         // 接收到请求，记录请求内容
         ServletRequestAttributes attributes = (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
         HttpServletRequest request = attributes.getRequest();
-
         // 记录下请求内容
         logger.info("请求地址 : " + request.getRequestURL().toString());
         logger.info("HTTP METHOD : " + request.getMethod());
@@ -41,7 +41,7 @@ public class WebLogAspect {
         logger.info("CLASS_METHOD : " + joinPoint.getSignature().getDeclaringTypeName() + "."
                 + joinPoint.getSignature().getName());
         logger.info("参数 : " + Arrays.toString(joinPoint.getArgs()));
-//        loggger.info("参数 : " + joinPoint.getArgs());
+        //loggger.info("参数 : " + joinPoint.getArgs());
 
     }
 
@@ -54,8 +54,8 @@ public class WebLogAspect {
     @Around("logPointCut()")
     public Object doAround(ProceedingJoinPoint pjp) throws Throwable {
         long startTime = System.currentTimeMillis();
-        Object ob = pjp.proceed();// ob 为方法的返回值
+        Object object = pjp.proceed();// object 为方法的返回值
         logger.info("耗时 : " + (System.currentTimeMillis() - startTime) + "毫秒");
-        return ob;
+        return object;
     }
 }

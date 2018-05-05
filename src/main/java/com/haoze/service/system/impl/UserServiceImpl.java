@@ -1,4 +1,4 @@
-package com.haoze.service.impl.system;
+package com.haoze.service.system.impl;
 
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
