@@ -3,13 +3,13 @@
 
 <mapper namespace="com.haoze.dao.system.DepartmentDao">
 
-    <select id="get" resultType="com.haoze.model.system.DepartmentEntity">
+    <select id="get" resultType="com.haoze.model.system.entity.DepartmentEntity">
         select
         `dept_id`,`parent_id`,`name`,`order_num`,`del_flag` from sys_dept
         where dept_id = #{value}
     </select>
 
-    <select id="list" resultType="com.haoze.model.system.DepartmentEntity">
+    <select id="list" resultType="com.haoze.model.system.entity.DepartmentEntity">
         select `dept_id`,`parent_id`,`name`,`order_num`,`del_flag` from
         sys_dept
         <where>
@@ -43,7 +43,7 @@
         </where>
     </select>
 
-    <insert id="save" parameterType="com.haoze.model.system.DepartmentEntity"
+    <insert id="save" parameterType="com.haoze.model.system.entity.DepartmentEntity"
             useGeneratedKeys="true" keyProperty="deptId">
         insert into sys_dept
         (
@@ -61,7 +61,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.haoze.model.system.DepartmentEntity">
+    <update id="update" parameterType="com.haoze.model.system.entity.DepartmentEntity">
         update sys_dept
         <set>
             <if test="parentId != null">`parent_id` = #{parentId}, </if>

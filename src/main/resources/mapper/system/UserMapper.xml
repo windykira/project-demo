@@ -3,11 +3,11 @@
 
 <mapper namespace="com.haoze.dao.system.UserDao">
 
-    <select id="get" resultType="com.haoze.model.system.UserEntity">
+    <select id="get" resultType="com.haoze.model.system.entity.UserEntity">
         select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user where user_id = #{value}
     </select>
 
-    <select id="list" resultType="com.haoze.model.system.UserEntity">
+    <select id="list" resultType="com.haoze.model.system.entity.UserEntity">
         select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user
         <where>
             <if test="userId != null and userId != ''"> and user_id = #{userId} </if>
@@ -68,7 +68,7 @@
         </where>
     </select>
 
-    <insert id="save" parameterType="com.haoze.model.system.UserEntity" useGeneratedKeys="true" keyProperty="userId">
+    <insert id="save" parameterType="com.haoze.model.system.entity.UserEntity" useGeneratedKeys="true" keyProperty="userId">
         insert into sys_user
         (
         `username`,
@@ -113,7 +113,7 @@
         )
     </insert>
 
-    <update id="update" parameterType="com.haoze.model.system.UserEntity">
+    <update id="update" parameterType="com.haoze.model.system.entity.UserEntity">
         update sys_user
         <set>
             <if test="username != null">`username` = #{username}, </if>

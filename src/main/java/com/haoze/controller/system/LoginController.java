@@ -3,7 +3,7 @@ package com.haoze.controller.system;
 import com.haoze.common.annotation.Note;
 import com.haoze.common.controller.BaseController;
 import com.haoze.common.model.Tree;
-import com.haoze.model.system.MenuEntity;
+import com.haoze.model.system.entity.MenuEntity;
 import com.haoze.service.system.MenuService;
 import com.haoze.common.model.AjaxResult;
 import com.haoze.utils.MD5Util;
@@ -71,7 +71,8 @@ public class LoginController extends BaseController {
             }
         }
         model.addAttribute("menus", newMenus);
-        model.addAttribute("name", "超级管理员");
+        model.addAttribute("name", getUser().getName());
+        model.addAttribute("username", getUser().getUsername());
         /*FileDO fileDO = fileService.get(getUser().getPicId());
         if(fileDO!=null&&fileDO.getUrl()!=null){
             if(fileService.isExist(fileDO.getUrl())){
@@ -83,7 +84,6 @@ public class LoginController extends BaseController {
             model.addAttribute("picUrl","/img/photo_s.jpg");
         }*/
         model.addAttribute("picUrl","/img/photo_s.jpg");
-        model.addAttribute("username", "admin");
         return "index_v1";
     }
 

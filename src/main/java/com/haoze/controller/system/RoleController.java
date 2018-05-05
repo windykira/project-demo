@@ -4,7 +4,7 @@ import com.haoze.common.annotation.Note;
 import com.haoze.common.controller.BaseController;
 import com.haoze.common.model.AjaxResult;
 import com.haoze.common.model.Constant;
-import com.haoze.model.system.RoleEntity;
+import com.haoze.model.system.entity.RoleEntity;
 import com.haoze.service.system.RoleService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -65,6 +65,21 @@ public class RoleController extends BaseController{
             return AjaxResult.failure(1, "演示系统不允许修改,完整体验请部署程序");
         }
         if (roleService.save(role) > 0) {
+            return AjaxResult.success();
+        } else {
+            return AjaxResult.failure(1, "保存失败");
+        }
+    }
+
+    @Note("更新角色")
+    @RequiresPermissions("sys:role:edit")
+    @PostMapping("/update")
+    @ResponseBody()
+    AjaxResult update(RoleEntity role) {
+        if (Constant.DEMO_ACCOUNT.equals(getUsername())) {
+            return AjaxResult.failure(1, "演示系统不允许修改,完整体验请部署程序");
+        }
+        if (roleService.update(role) > 0) {
             return AjaxResult.success();
         } else {
             return AjaxResult.failure(1, "保存失败");

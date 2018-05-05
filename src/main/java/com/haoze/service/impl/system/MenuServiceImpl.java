@@ -3,7 +3,7 @@ package com.haoze.service.impl.system;
 import com.haoze.common.model.Tree;
 import com.haoze.dao.system.MenuDao;
 import com.haoze.dao.system.RoleMenuDao;
-import com.haoze.model.system.MenuEntity;
+import com.haoze.model.system.entity.MenuEntity;
 import com.haoze.service.system.MenuService;
 import com.haoze.utils.TreeBuildUtil;
 import org.apache.commons.lang3.StringUtils;

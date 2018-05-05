@@ -3,13 +3,13 @@
 
 <mapper namespace="com.haoze.dao.system.RoleDao">
 
-	<select id="get" resultType="com.haoze.model.system.RoleEntity">
+	<select id="get" resultType="com.haoze.model.system.entity.RoleEntity">
 		select
 		`role_id`,`role_name`,`role_sign`,`remark`,`user_id_create`,`gmt_create`,`gmt_modified`
 		from sys_role where role_id = #{value}
 	</select>
 
-	<select id="list" resultType="com.haoze.model.system.RoleEntity">
+	<select id="list" resultType="com.haoze.model.system.entity.RoleEntity">
 		select
 		`role_id`,`role_name`,`role_sign`,`remark`,`user_id_create`,`gmt_create`,`gmt_modified`
 		from sys_role
@@ -48,7 +48,7 @@
 		</where>
 	</select>
 
-	<insert id="save" parameterType="com.haoze.model.system.RoleEntity"
+	<insert id="save" parameterType="com.haoze.model.system.entity.RoleEntity"
 		useGeneratedKeys="true" keyProperty="roleId">
 		insert into sys_role
 		(
@@ -70,7 +70,7 @@
 		)
 	</insert>
 
-	<update id="update" parameterType="com.haoze.model.system.RoleEntity">
+	<update id="update" parameterType="com.haoze.model.system.entity.RoleEntity">
 		update sys_role
 		<set>
 			<if test="roleName != null">`role_name` = #{roleName}, </if>

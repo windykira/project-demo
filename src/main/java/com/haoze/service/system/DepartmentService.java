@@ -1,7 +1,7 @@
 package com.haoze.service.system;
 
 import com.haoze.common.model.Tree;
-import com.haoze.model.system.DepartmentEntity;
+import com.haoze.model.system.entity.DepartmentEntity;
 import org.springframework.stereotype.Service;
 
 /**

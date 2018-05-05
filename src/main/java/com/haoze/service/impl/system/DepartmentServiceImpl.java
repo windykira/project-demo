@@ -2,7 +2,7 @@ package com.haoze.service.impl.system;
 
 import com.haoze.common.model.Tree;
 import com.haoze.dao.system.DepartmentDao;
-import com.haoze.model.system.DepartmentEntity;
+import com.haoze.model.system.entity.DepartmentEntity;
 import com.haoze.service.system.DepartmentService;
 import com.haoze.utils.TreeBuildUtil;
 import org.springframework.beans.factory.annotation.Autowired;

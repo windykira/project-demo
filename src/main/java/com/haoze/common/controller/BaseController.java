@@ -1,6 +1,6 @@
 package com.haoze.common.controller;
 
-import com.haoze.model.system.UserEntity;
+import com.haoze.model.system.entity.UserEntity;
 import com.haoze.utils.ShiroUtil;
 import org.springframework.stereotype.Controller;
 

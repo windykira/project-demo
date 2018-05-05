@@ -5,7 +5,7 @@ import com.haoze.common.controller.BaseController;
 import com.haoze.common.model.AjaxResult;
 import com.haoze.common.model.Constant;
 import com.haoze.common.model.Tree;
-import com.haoze.model.system.MenuEntity;
+import com.haoze.model.system.entity.MenuEntity;
 import com.haoze.service.system.MenuService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;

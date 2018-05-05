@@ -1,6 +1,6 @@
 package com.haoze.dao.system;
 
-import com.haoze.model.system.RoleMenuEntity;
+import com.haoze.model.system.entity.RoleMenuEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;

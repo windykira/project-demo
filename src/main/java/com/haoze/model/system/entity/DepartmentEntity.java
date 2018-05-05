@@ -1,4 +1,4 @@
-package com.haoze.model.system;
+package com.haoze.model.system.entity;
 
 /**
  * 部门基本信息。

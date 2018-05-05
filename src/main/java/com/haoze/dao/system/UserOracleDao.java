@@ -1,7 +1,7 @@
 package com.haoze.dao.system;
 
 import com.github.pagehelper.Page;
-import com.haoze.model.system.UserEntity;
+import com.haoze.model.system.entity.UserEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.Map;

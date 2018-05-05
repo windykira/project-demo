@@ -1,7 +1,7 @@
 package com.haoze.service.system;
 
 import com.haoze.common.model.Tree;
-import com.haoze.model.system.MenuEntity;
+import com.haoze.model.system.entity.MenuEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

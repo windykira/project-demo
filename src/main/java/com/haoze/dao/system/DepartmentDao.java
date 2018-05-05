@@ -1,6 +1,6 @@
 package com.haoze.dao.system;
 
-import com.haoze.model.system.DepartmentEntity;
+import com.haoze.model.system.entity.DepartmentEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -14,4 +14,5 @@ import java.util.Map;
 public interface DepartmentDao {
 
     List<DepartmentEntity> list(Map<String,Object> map);
+    DepartmentEntity get(Long deptId);
 }

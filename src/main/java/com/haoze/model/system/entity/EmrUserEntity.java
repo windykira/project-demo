@@ -1,4 +1,4 @@
-package com.haoze.model.system;
+package com.haoze.model.system.entity;
 
 import com.haoze.common.model.BaseEntity;
 

@@ -1,6 +1,6 @@
 package com.haoze.utils;
 
-import com.haoze.model.system.UserEntity;
+import com.haoze.model.system.entity.UserEntity;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.session.Session;
 import org.apache.shiro.session.mgt.eis.SessionDAO;

@@ -1,12 +1,11 @@
 package com.haoze;
 
 import com.github.pagehelper.Page;
-import com.haoze.common.model.QueryParam;
-import com.haoze.model.system.UserEntity;
+import com.haoze.model.system.entity.UserEntity;
 import com.haoze.service.system.UserService;
 import com.haoze.utils.JsoupUtil;
+import com.haoze.utils.OcsCache;
 import org.jsoup.Connection;
-import org.jsoup.nodes.Document;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +13,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -49,4 +46,20 @@ public class ProjectDemoApplicationTests {
         assert response != null;
     }
 
+    @Test
+    public void testIo(){
+
+        String path = System.getProperty("java.io.tmpdir");
+        assert path != null;
+    }
+
+    @Test
+    public void testCache() throws InterruptedException {
+
+        OcsCache.put("test","test",5);
+        //Thread.sleep(1000 * 6);
+
+        Object test = OcsCache.get("test");
+        assert test != null;
+    }
 }

@@ -1,7 +1,8 @@
 package com.haoze.service.system;
 
 import com.github.pagehelper.Page;
-import com.haoze.model.system.UserEntity;
+import com.haoze.model.system.entity.UserEntity;
+import com.haoze.model.system.vo.UserVO;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -29,4 +30,10 @@ public interface UserService {
     int count(Map<String, Object> map);
 
     Page<UserEntity> listByPage(int pageNo, int pageSize);
+
+    UserEntity get(Long id);
+
+    int update(UserEntity user);
+
+    int adminResetPwd(UserVO UserVo) throws Exception;
 }

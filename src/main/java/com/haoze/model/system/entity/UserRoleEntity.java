@@ -1,40 +1,44 @@
-package com.haoze.model.system;
+package com.haoze.model.system.entity;
 
 /**
- * 角色菜单关联信息。
- * @author maxl 2018-05-03。
+ * Created by haoz-dev4 on 2018/5/5.
  */
-public class RoleMenuEntity {
+public class UserRoleEntity {
 
     private Long id;
-    private Long  roleId;
-    private Long menuId;
+    private Long userId;
+    private Long roleId;
 
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
     public Long getRoleId() {
         return roleId;
     }
+
     public void setRoleId(Long roleId) {
         this.roleId = roleId;
-    }
-    public Long getMenuId() {
-        return menuId;
-    }
-    public void setMenuId(Long menuId) {
-        this.menuId = menuId;
     }
 
     @Override
     public String toString() {
-        return "RoleMenuEntity{" +
+        return "UserRoleEntity{" +
                 "id=" + id +
+                ", userId=" + userId +
                 ", roleId=" + roleId +
-                ", menuId=" + menuId +
                 '}';
     }
 }

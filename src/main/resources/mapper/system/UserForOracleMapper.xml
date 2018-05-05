@@ -3,7 +3,7 @@
 
 <mapper namespace="com.haoze.dao.system.UserOracleDao">
 
-    <resultMap id="BaseResultMap" type="com.haoze.model.system.EmrUserEntity" >
+    <resultMap id="BaseResultMap" type="com.haoze.model.system.entity.EmrUserEntity" >
         <result column="USERID" property="userID" jdbcType="VARCHAR" />
         <result column="USERNAME" property="userName" jdbcType="VARCHAR" />
         <result column="NAME" property="name" jdbcType="VARCHAR" />
@@ -30,11 +30,11 @@
           USERID,USERNAME,NAME,PASSWORD,DEPTID,EMAIL,MOBILE,STATUS,CREATEUSER,CREATEDATE,MODIFYDATE,SEX,BIRTH,PICID,LIVEADDRESS,HOBBY,PROVINCE,CITY,DISTRICT
     </sql>
 
-    <select id="getForOracle" resultType="com.haoze.model.system.EmrUserEntity">
+    <select id="getForOracle" resultType="com.haoze.model.system.entity.EmrUserEntity">
         select `user_id`,`username`,`name`,`password`,`dept_id`,`email`,`mobile`,`status`,`user_id_create`,`gmt_create`,`gmt_modified`,`sex`,`birth`,`pic_id`,`live_address`,`hobby`,`province`,`city`,`district` from sys_user where user_id = #{value}
     </select>
 
-    <select id="listByPage" resultType="com.haoze.model.system.EmrUserEntity">
+    <select id="listByPage" resultType="com.haoze.model.system.entity.EmrUserEntity">
         select
         <include refid="Base_Column_List" />
         from SYS_USER
@@ -94,7 +94,7 @@
         </where>
     </select>
 
-    <insert id="saveForOracle" parameterType="com.haoze.model.system.EmrUserEntity" useGeneratedKeys="true" keyProperty="userId">
+    <insert id="saveForOracle" parameterType="com.haoze.model.system.entity.EmrUserEntity" useGeneratedKeys="true" keyProperty="userId">
         insert into sys_user
         (
         `username`,
@@ -139,7 +139,7 @@
         )
     </insert>
 
-    <update id="updateForOracle" parameterType="com.haoze.model.system.EmrUserEntity">
+    <update id="updateForOracle" parameterType="com.haoze.model.system.entity.EmrUserEntity">
         update sys_user
         <set>
             <if test="username != null">`username` = #{username}, </if>

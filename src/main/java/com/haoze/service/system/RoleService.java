@@ -1,6 +1,6 @@
 package com.haoze.service.system;
 
-import com.haoze.model.system.RoleEntity;
+import com.haoze.model.system.entity.RoleEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +13,7 @@ public interface RoleService {
 
     RoleEntity get(Long id);
     List<RoleEntity> list();
-
     int save(RoleEntity role);
+    List<RoleEntity> list(Long userId);
+    int update(RoleEntity role);
 }

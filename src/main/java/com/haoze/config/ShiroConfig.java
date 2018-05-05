@@ -60,10 +60,12 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/system/index/main", "anon");
         filterChainDefinitionMap.put("/main/open/**", "anon");
 
-        filterChainDefinitionMap.put("/index", "authc");
-        filterChainDefinitionMap.put("/user/**", "authc");
-        filterChainDefinitionMap.put("/sysDept/**", "authc");
-        filterChainDefinitionMap.put("/role/**", "authc");
+        filterChainDefinitionMap.put("/**", "authc");
+        /*filterChainDefinitionMap.put("/index", "authc");
+        filterChainDefinitionMap.put("/sys/user", "authc");
+        filterChainDefinitionMap.put("/user*//**", "authc");
+        filterChainDefinitionMap.put("/sysDept*//**", "authc");
+        filterChainDefinitionMap.put("/role*//**", "authc");*/
         shiroFilterFactoryBean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return shiroFilterFactoryBean;
     }
@@ -125,6 +127,15 @@ public class ShiroConfig {
         EhCacheManager em = new EhCacheManager();
         em.setCacheManagerConfigFile("classpath:config/ehcache.xml");
         return em;
+    }
+
+    /**
+     * ShiroDialect，为了在thymeleaf里使用shiro的标签的bean
+     * @return
+     */
+    @Bean
+    public ShiroDialect shiroDialect() {
+        return new ShiroDialect();
     }
 
     /*@Bean(name = "shiroDialect")

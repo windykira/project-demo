@@ -1,6 +1,6 @@
 package com.haoze.dao.system;
 
-import com.haoze.model.system.UserEntity;
+import com.haoze.model.system.entity.UserEntity;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -15,4 +15,6 @@ public interface UserDao {
 
     List<UserEntity> list(Map<String,Object> map);
     int count(Map<String,Object> map);
+    UserEntity get(Long userId);
+    int update(UserEntity user);
 }
