@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Arrays;
 
 /**
- * 請求及性能監控。
+ * 请求信息及性能监控。
  * @author maxl 2018-05-05。
  */
 @Aspect
