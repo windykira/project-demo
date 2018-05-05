@@ -3,6 +3,7 @@ package com.haoze;
 import com.github.pagehelper.Page;
 import com.haoze.model.system.entity.UserEntity;
 import com.haoze.service.system.UserService;
+import com.haoze.utils.DateFormatUtil;
 import com.haoze.utils.JsoupUtil;
 import com.haoze.utils.OcsCache;
 import org.jsoup.Connection;
@@ -14,6 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.io.IOException;
 import java.net.URLEncoder;
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -61,5 +63,11 @@ public class ProjectDemoApplicationTests {
 
         Object test = OcsCache.get("test");
         assert test != null;
+    }
+
+    @Test
+    public void testDateFormatUtil() throws ParseException {
+
+        DateFormatUtil.parseDate("2015-05-31 12:08:25");
     }
 }

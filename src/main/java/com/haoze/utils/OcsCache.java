@@ -39,6 +39,12 @@ public class OcsCache {
         cache.put(element);
     }
 
+    public static Object get(String key) {
+        Cache cache = manager.getCache(defaultCache);
+        Element element = cache.get(key);
+        return element == null ? null : element.getObjectValue();
+    }
+
     public static Object get(String cacheName,String key) {
         Cache cache = manager.getCache(cacheName);
         Element element = cache.get(key);
