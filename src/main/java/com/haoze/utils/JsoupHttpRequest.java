@@ -16,7 +16,7 @@ import java.util.Map;
  */
 public class JsoupHttpRequest {
 
-    public static Connection.Response sendHttpGetRequest(String url, String cookie, Map<String, Object> dataMap) throws IOException {
+    public static Connection.Response sendHttpRequest(String url, String cookie, Map<String, Object> dataMap) throws IOException {
 
         Connection con = Jsoup.connect(url);
         con.header("Accept", "text/html, application/xhtml+xml, */*");

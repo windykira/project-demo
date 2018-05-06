@@ -44,7 +44,7 @@ public class ProjectDemoApplicationTests {
 
         String strCity = URLEncoder.encode("常州", "GB2312");
         String url = "http://php.weather.sina.com.cn/xml.php?city=" + strCity + "&password=DJOYnieT8234jlsK&day=0";
-        Connection.Response response = JsoupHttpRequest.sendHttpGetRequest(url,"",null);
+        Connection.Response response = JsoupHttpRequest.sendHttpRequest(url,"",null);
         assert response != null;
     }
 
