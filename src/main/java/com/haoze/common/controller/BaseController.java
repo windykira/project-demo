@@ -6,7 +6,8 @@ import org.springframework.stereotype.Controller;
 
 /**
  * 基础Controller。
- * @author maxl 2018-04-27。
+ * @author maxl
+ * @time 2018-04-27。
  */
 @Controller
 public class BaseController {

@@ -9,7 +9,8 @@ import org.springframework.stereotype.Component;
 
 /**
  * IOC容器工具。
- * @author maxl 2018-04-27。
+ * @author maxl
+ * @time 2018-04-27。
  */
 @Component
 public class ApplicationContextUtil implements ApplicationContextAware {

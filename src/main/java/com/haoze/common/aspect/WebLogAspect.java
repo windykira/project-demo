@@ -14,7 +14,8 @@ import java.util.Arrays;
 
 /**
  * 请求信息及性能监控。
- * @author maxl 2018-05-05。
+ * @author maxl
+ * @time 2018-05-05。
  */
 @Aspect
 @Component

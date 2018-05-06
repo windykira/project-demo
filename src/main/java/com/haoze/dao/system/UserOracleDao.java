@@ -8,7 +8,8 @@ import java.util.Map;
 
 /**
  * 用户数据操作类。
- * @author maxl 2018-05-04。
+ * @author maxl
+ * @time 2018-05-04。
  */
 @Mapper
 public interface UserOracleDao {

@@ -2,7 +2,8 @@ package com.haoze.model.system.entity;
 
 /**
  * 角色菜单关联信息。
- * @author maxl 2018-05-03。
+ * @author maxl
+ * @time 2018-05-03。
  */
 public class RoleMenuEntity {
 

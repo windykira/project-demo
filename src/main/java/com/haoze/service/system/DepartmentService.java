@@ -6,7 +6,8 @@ import org.springframework.stereotype.Service;
 
 /**
  * 部门数据服务接口。
- * @author maxl 2018-05-02。
+ * @author maxl
+ * @time 2018-05-02。
  */
 @Service
 public interface DepartmentService {

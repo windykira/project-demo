@@ -8,7 +8,8 @@ import java.util.List;
 
 /**
  * 用户数据基本信息。
- * @author maxl 2018-04-27。
+ * @author maxl
+ * @time 2018-04-27。
  */
 public class UserEntity implements Serializable{
 

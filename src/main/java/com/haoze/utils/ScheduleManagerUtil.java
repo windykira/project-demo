@@ -5,7 +5,8 @@ import org.quartz.impl.StdSchedulerFactory;
 
 /**
  * 定时任务操作工具。
- * @author maxl 2018-04-27。
+ * @author maxl
+ * @time 2018-04-27。
  */
 public class ScheduleManagerUtil {
 

@@ -5,7 +5,8 @@ import org.apache.shiro.util.ByteSource;
 
 /**
  * MD5加密工具。
- * @author maxl 2018-04-27。
+ * @author maxl
+ * @time 2018-04-27。
  */
 public class MD5Util {
 

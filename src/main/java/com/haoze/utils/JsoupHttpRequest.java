@@ -11,10 +11,10 @@ import java.util.Map;
 
 /**
  * 构建Http请求工具。
- *
- * @author maxl 2018-05-04。
+ * @author maxl
+ * @time 2018-05-04。
  */
-public class JsoupUtil {
+public class JsoupHttpRequest {
 
     public static Connection.Response sendHttpGetRequest(String url, String cookie, Map<String, Object> dataMap) throws IOException {
 

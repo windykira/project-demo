@@ -15,7 +15,8 @@ import java.util.Map;
 
 /**
  * 部门数据服务实现类。
- * @author maxl 2018-05-02。
+ * @author maxl
+ * @time 2018-05-02。
  */
 @Service
 public class DepartmentServiceImpl implements DepartmentService {

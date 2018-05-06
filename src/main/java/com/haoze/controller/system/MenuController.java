@@ -18,7 +18,8 @@ import java.util.Map;
 
 /**
  * 系统菜单控制器信息。
- * @author maxl 2018-05-03。
+ * @author maxl
+ * @time 2018-05-03。
  */
 @RequestMapping("/sys/menu")
 @Controller

@@ -21,7 +21,8 @@ import java.util.Map;
 
 /**
  * 用户数据服务接口实现类。
- * @author maxl 2018-05-02。
+ * @author maxl
+ * @time 2018-05-02。
  */
 @Service
 public class UserServiceImpl implements UserService{
