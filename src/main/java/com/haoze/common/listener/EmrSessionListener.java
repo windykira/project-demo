@@ -26,7 +26,6 @@ public class EmrSessionListener implements SessionListener {
 	@Override
 	public void onExpiration(Session session) {
 		sessionCount.decrementAndGet();
-
 	}
 
 	public int getSessionCount() {
