@@ -8,7 +8,8 @@ import java.net.URL;
 
 /**
  * Ehcache緩存。
- * @author maxl 2018-05-05。
+ * @author maxl
+ * @time 2018-05-05。
  */
 public class OcsCache {
 

@@ -1,4 +1,4 @@
-package com.haoze.service.impl.system;
+package com.haoze.service.system.impl;
 
 import com.haoze.common.model.Tree;
 import com.haoze.dao.system.MenuDao;
@@ -16,7 +16,8 @@ import java.util.*;
 
 /**
  * 菜单数据服务类。
- * @author maxl 2018-04-27。
+ * @author maxl
+ * @time 2018-04-27。
  */
 @Service
 @Transactional(readOnly = true,rollbackFor = Exception.class)

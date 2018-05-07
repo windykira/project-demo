@@ -8,7 +8,8 @@ import java.util.Map;
 
 /**
  * 树形数据信息。
- * @author maxl 2018-04-27。
+ * @author maxl
+ * @time 2018-04-27。
  */
 public class Tree<T> {
 	/**

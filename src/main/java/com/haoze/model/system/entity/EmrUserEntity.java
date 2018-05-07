@@ -6,7 +6,8 @@ import java.util.Date;
 
 /**
  * 用户数据基本信息。
- * @author maxl 2018-05-02。
+ * @author maxl
+ * @time 2018-05-02。
  */
 public class EmrUserEntity{
 

@@ -1,4 +1,4 @@
-package com.haoze.service.impl.system;
+package com.haoze.service.system.impl;
 
 import com.haoze.dao.system.RoleDao;
 import com.haoze.dao.system.RoleMenuDao;

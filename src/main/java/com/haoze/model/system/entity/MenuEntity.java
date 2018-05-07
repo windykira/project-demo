@@ -4,7 +4,8 @@ import java.io.Serializable;
 import java.util.Date;
 /**
  * 菜单数据基本信息。
- * @author maxl 2018-04-27。
+ * @author maxl
+ * @time 2018-04-27。
  */
 public class MenuEntity implements Serializable{
 

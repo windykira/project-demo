@@ -22,8 +22,8 @@ import java.util.LinkedHashMap;
 
 /**
  * Shiro注册信息。
- *
- * @author maxl 2018-04-27。
+ * @author maxl
+ * @time 2018-04-27。
  */
 @Configuration
 public class ShiroConfig {

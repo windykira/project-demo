@@ -8,7 +8,8 @@ import java.util.List;
 
 /**
  * 分页封装信息。
- * @author maxl 2018-05-03。
+ * @author maxl
+ * @time 2018-05-03。
  */
 public class PaginationResult<T> implements Serializable {
 

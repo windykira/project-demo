@@ -7,7 +7,8 @@ import java.util.List;
 
 /**
  * 角色菜单关联数据操作类。
- * @author maxl 2018-05-03。
+ * @author maxl
+ * @time 2018-05-03。
  */
 @Mapper
 public interface RoleMenuDao {

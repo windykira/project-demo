@@ -5,7 +5,8 @@ import java.util.Date;
 
 /**
  * 基本实体信息。
- * @author maxl 2018-05-02。
+ * @author maxl
+ * @time 2018-05-02。
  */
 public class BaseEntity implements Serializable{
 

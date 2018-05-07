@@ -6,7 +6,8 @@ import java.util.Properties;
 
 /**
  * Properties配置文件操作工具。
- * @author maxl 2018-05-02
+ * @author maxl
+ * @time 2018-05-02
  */
 public class SystemConfigParseUtil {
 
